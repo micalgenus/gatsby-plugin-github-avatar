@@ -1,13 +1,16 @@
-declare module 'gatsby-plugin-github-avatar' {
-  import * as React from 'react';
+import * as React from 'react';
 
-  export interface GithubAvatarProps extends React.Props<any> {}
+export interface GithubAvatarProps extends React.Props<any> {
+  className?: string;
+}
 
-  export class GithubAvatar extends React.Component<GithubAvatarProps, any> {
-    constructor(props?: GithubAvatarProps, context?: any);
+export interface GithubAvatarState {
+  username: string;
+  imagePath: string;
+}
 
-    username: string;
-  }
+export default class GithubAvatar extends React.Component<GithubAvatarProps, GithubAvatarState> {
+  constructor(props?: GithubAvatarProps, context?: any);
 
-  export default AutosizeInput;
+  username: string;
 }

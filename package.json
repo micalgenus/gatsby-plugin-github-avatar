@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-plugin-github-avatar",
-  "version": "0.0.2",
+  "name": "@micalgenus/gatsby-plugin-github-avatar",
+  "version": "0.0.1",
   "author": "micalgenus <micalgenus@gmail.com> (https://micalgenus.github.io/)",
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "babel src --out-dir dist --copy-files --extensions \".ts,.tsx\""
+    "build": "babel src --out-dir . --copy-files --extensions \".ts,.tsx\""
   },
   "license": "MIT",
   "repository": {
@@ -42,6 +42,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "react": "^16.8.6"
   }
 }

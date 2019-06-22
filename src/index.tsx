@@ -1,43 +1,41 @@
 import React, { Component } from 'react';
-import { GithubAvatarProps } from 'gatsby-plugin-github-avatar';
+import axios from 'axios';
+
+import { GithubAvatarProps, GithubAvatarState } from '../typings';
 
 // import PropTypes from 'prop-types';
 
-export default class GithubAvatar extends Component<GithubAvatarProps> {
-  username: string;
+declare const GATSBY_GITHUB_USERNAME: string | undefined;
 
-  constructor(props: any) {
+export default class GithubAvatar extends Component<GithubAvatarProps, GithubAvatarState> {
+  username: string;
+  imagePath: string;
+
+  constructor(props: GithubAvatarProps) {
     super(props);
-    this.state = props;
     this.username = typeof GATSBY_GITHUB_USERNAME !== `undefined` && GATSBY_GITHUB_USERNAME !== '' ? GATSBY_GITHUB_USERNAME : '';
+    this.imagePath = '';
   }
 
   componentWillReceiveProps(nextProps: any) {
     this.setState(nextProps);
   }
 
-  componentWillMount() {
-    // if (typeof window != 'undefined' && window.document) {
-    //   const component = this;
-    //   window.disqus_config = function() {
-    //     this.page.identifier = component.state.identifier;
-    //     this.page.title = component.state.title;
-    //     this.page.url = component.state.url;
-    //   };
-    //   const script = document.createElement('script');
-    //   script.src = `//${this.shortname}.disqus.com/embed.js`;
-    //   script.async = true;
-    //   document.body.appendChild(script);
-    // }
+  async componentDidMount() {
+    const githubProfile = await axios({
+      method: 'GET',
+      url: 'https://api.github.com/users/' + this.username,
+    });
+
+    this.setState({ imagePath: githubProfile.data.avatar_url });
+    console.log(githubProfile);
   }
 
   render() {
-    const props = this.props || {};
-    return (
-      <div id="github_avatar" {...props}>
-        {this.username}
-      </div>
-    );
+    const { className } = this.props || { className: '' };
+    const { imagePath } = this.state || { imagePath: '' };
+
+    return <img className={className} src={imagePath} alt="Github avatar" />;
   }
 }
 
