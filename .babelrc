@@ -1,0 +1,16 @@
+{
+  "presets": ["@babel/typescript", ["@babel/env", { "targets": { "node": "8" } }]],
+  "env": { "test": { "plugins": ["istanbul"] } },
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": { "@": "./src" }
+      }
+    ],
+    "@babel/plugin-transform-react-jsx"
+  ],
+  "sourceMaps": true,
+  "comments": false
+}

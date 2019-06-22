@@ -1,0 +1,47 @@
+{
+  "name": "gatsby-plugin-github-avatar",
+  "version": "0.0.2",
+  "author": "micalgenus <micalgenus@gmail.com> (https://micalgenus.github.io/)",
+  "main": "./dist/index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "babel src --out-dir dist --copy-files --extensions \".ts,.tsx\""
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/micalgenus/gatsby-plugin-github-avatar"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-github-avatar"
+  ],
+  "bugs": {
+    "url": "https://github.com/micalgenus/gatsby-plugin-github-avatar/issues"
+  },
+  "homepage": "https://github.com/micalgenus/gatsby-plugin-github-avatar",
+  "typings": "./typings/index.d.ts",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/node": "^12.0.2",
+    "@types/react": "^16.8.18",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "husky": "^2.3.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.17.1",
+    "pretty-quick": "^1.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "dependencies": {
+    "react": "^16.8.6"
+  }
+}
