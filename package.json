@@ -1,6 +1,6 @@
 {
   "name": "@micalgenus/gatsby-plugin-github-avatar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "micalgenus <micalgenus@gmail.com> (https://micalgenus.github.io/)",
   "main": "./index.js",
   "scripts": {
