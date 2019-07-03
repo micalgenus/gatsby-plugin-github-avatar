@@ -15,7 +15,7 @@ script:
 deploy:
   - provider: npm
     email: micalgenus@gmail.com
-    api_key: $NPM_API
+    api_key: $NPM_KEY
     skip_cleanup: true
     on:
       branch: master
