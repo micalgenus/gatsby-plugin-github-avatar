@@ -32,6 +32,6 @@ export default class GithubAvatar extends Component<GithubAvatarProps, GithubAva
     const { className } = this.props || { className: '' };
     const { imagePath } = this.state || { imagePath: '' };
 
-    return <img className={className} src={imagePath} alt="Github avatar" />;
+    return imagePath ? <img className={className} src={imagePath} alt="Github avatar" /> : null;
   }
 }

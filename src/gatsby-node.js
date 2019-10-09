@@ -14,8 +14,7 @@ exports.onPreInit = function(_ref, pluginOptions) {
   githubAvatarDidRunAlready = true;
 };
 
-exports.onCreateWebpackConfig = async ({ plugins, actions }) => {
-  var setWebpackConfig = actions.setWebpackConfig;
+exports.onCreateWebpackConfig = async ({ plugins, actions: { setWebpackConfig } }) => {
   setWebpackConfig({
     plugins: [
       plugins.define({
