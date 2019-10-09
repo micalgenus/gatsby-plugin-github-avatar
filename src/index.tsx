@@ -26,7 +26,6 @@ export default class GithubAvatar extends Component<GithubAvatarProps, GithubAva
     });
 
     this.setState({ imagePath: githubProfile.data.avatar_url });
-    console.log(githubProfile);
   }
 
   render() {
