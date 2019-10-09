@@ -1,5 +1,4 @@
 'use strict';
-const axios = require('axios');
 
 var githubAvatarDidRunAlready = false;
 let username = '';
@@ -15,16 +14,12 @@ exports.onPreInit = function(_ref, pluginOptions) {
   githubAvatarDidRunAlready = true;
 };
 
-exports.onCreateWebpackConfig = async ({ plugins, actions: { setWebpackConfig } }) => {
-  const githubProfile = await axios({
-    method: 'GET',
-    url: 'https://api.github.com/users/' + this.username,
-  });
-
+exports.onCreateWebpackConfig = ({ plugins, actions }) => {
+  var setWebpackConfig = actions.setWebpackConfig;
   setWebpackConfig({
     plugins: [
       plugins.define({
-        GATSBY_GITHUB_AVATAR: JSON.stringify(githubProfile && githubProfile.data && githubProfile.data.avatar_url),
+        GATSBY_GITHUB_USERNAME: JSON.stringify(username),
       }),
     ],
   });

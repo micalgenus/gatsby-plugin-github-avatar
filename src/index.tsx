@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import { GithubAvatarProps, GithubAvatarState } from '../typings';
 
-declare const GATSBY_GITHUB_AVATAR: string | undefined;
+declare const GATSBY_GITHUB_USERNAME: string | undefined;
 
 export default class GithubAvatar extends Component<GithubAvatarProps, GithubAvatarState> {
+  username: string;
   imagePath: string;
 
   constructor(props: GithubAvatarProps) {
     super(props);
-    this.imagePath = typeof GATSBY_GITHUB_AVATAR !== `undefined` && GATSBY_GITHUB_AVATAR !== '' ? GATSBY_GITHUB_AVATAR : '';
+    this.username = typeof GATSBY_GITHUB_USERNAME !== `undefined` && GATSBY_GITHUB_USERNAME !== '' ? GATSBY_GITHUB_USERNAME : '';
+    this.imagePath = '';
   }
 
-  componentWillReceiveProps({ imagePath, ...nextProps }: any) {
+  componentWillReceiveProps(nextProps: any) {
     this.setState(nextProps);
+  }
+
+  async componentDidMount() {
+    const githubProfile = await axios({
+      method: 'GET',
+      url: 'https://api.github.com/users/' + this.username,
+    });
+
+    this.setState({ imagePath: githubProfile.data.avatar_url });
   }
 
   render() {
