@@ -13,7 +13,7 @@ export default class GithubAvatar extends Component<GithubAvatarProps, GithubAva
   constructor(props: GithubAvatarProps) {
     super(props);
     this.username = typeof GATSBY_GITHUB_USERNAME !== `undefined` && GATSBY_GITHUB_USERNAME !== '' ? GATSBY_GITHUB_USERNAME : '';
-    this.imagePath = '';
+    this.imagePath = typeof GATSBY_GITHUB_AVATAR_DEFAULT !== `undefined` && GATSBY_GITHUB_AVATAR_DEFAULT !== '' ? GATSBY_GITHUB_AVATAR_DEFAULT : '';
   }
 
   componentWillReceiveProps(nextProps: any) {
@@ -32,8 +32,7 @@ export default class GithubAvatar extends Component<GithubAvatarProps, GithubAva
   render() {
     const { className } = this.props || { className: '' };
     const { imagePath } = this.state || { imagePath: '' };
-    const src = imagePath || GATSBY_GITHUB_AVATAR_DEFAULT;
 
-    return <img className={className} src={src} alt="Github avatar" />;
+    return <img className={className} src={imagePath} alt="Github avatar" />;
   }
 }
