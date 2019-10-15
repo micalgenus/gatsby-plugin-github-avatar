@@ -4,7 +4,6 @@ import axios from 'axios';
 import { GithubAvatarProps, GithubAvatarState } from '../typings';
 
 declare const GATSBY_GITHUB_USERNAME: string | undefined;
-declare const GATSBY_GITHUB_AVATAR_DEFAULT: string | undefined;
 
 export default class GithubAvatar extends Component<GithubAvatarProps, GithubAvatarState> {
   username: string;
@@ -13,7 +12,7 @@ export default class GithubAvatar extends Component<GithubAvatarProps, GithubAva
   constructor(props: GithubAvatarProps) {
     super(props);
     this.username = typeof GATSBY_GITHUB_USERNAME !== `undefined` && GATSBY_GITHUB_USERNAME !== '' ? GATSBY_GITHUB_USERNAME : '';
-    this.imagePath = typeof GATSBY_GITHUB_AVATAR_DEFAULT !== `undefined` && GATSBY_GITHUB_AVATAR_DEFAULT !== '' ? GATSBY_GITHUB_AVATAR_DEFAULT : '';
+    this.imagePath = '';
   }
 
   componentWillReceiveProps(nextProps: any) {
