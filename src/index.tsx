@@ -4,6 +4,7 @@ import axios from 'axios';
 import { GithubAvatarProps, GithubAvatarState } from '../typings';
 
 declare const GATSBY_GITHUB_USERNAME: string | undefined;
+declare const GATSBY_GITHUB_AVATAR_DEFAULT: string | undefined;
 
 export default class GithubAvatar extends Component<GithubAvatarProps, GithubAvatarState> {
   username: string;
@@ -32,6 +33,6 @@ export default class GithubAvatar extends Component<GithubAvatarProps, GithubAva
     const { className } = this.props || { className: '' };
     const { imagePath } = this.state || { imagePath: '' };
 
-    return imagePath ? <img className={className} src={imagePath} alt="Github avatar" /> : null;
+    return <img className={className} src={imagePath || GATSBY_GITHUB_AVATAR_DEFAULT} alt="Github avatar" />;
   }
 }
