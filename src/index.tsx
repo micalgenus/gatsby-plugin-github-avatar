@@ -9,14 +9,13 @@ declare const GATSBY_GITHUB_AVATAR_DEFAULT: number | undefined;
 export default class GithubAvatar extends Component<GithubAvatarProps, GithubAvatarState> {
   username: string;
   imagePath: string;
-  defaultId;
 
   constructor(props: GithubAvatarProps) {
     super(props);
     this.username = typeof GATSBY_GITHUB_USERNAME !== `undefined` && GATSBY_GITHUB_USERNAME !== '' ? GATSBY_GITHUB_USERNAME : '';
     const defaultId: number | undefined = GATSBY_GITHUB_AVATAR_DEFAULT;
 
-    this.imagePath = this.defaultId ? `https://avatars3.githubusercontent.com/u/${defaultId}?v=4` : '';
+    this.imagePath = defaultId ? `https://avatars3.githubusercontent.com/u/${defaultId}?v=4` : '';
   }
 
   componentWillReceiveProps(nextProps: any) {
