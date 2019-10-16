@@ -11,6 +11,7 @@ install:
 
 script:
   - yarn build
+  - yarn type-check
 
 deploy:
   - provider: npm
