@@ -23,6 +23,7 @@ module.exports = {
       resolve: `@micalgenus/gatsby-plugin-github-avatar`,
       options: {
         username: `micalgenus`, // Github username
+        default: 12954607, // Github userid for default image
       },
     },
   ],
